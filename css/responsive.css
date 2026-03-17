@@ -21,21 +21,37 @@
         z-index: 100;
     }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 60%;
-        height: 100vh;
-        /* background: rgba(138, 123, 123, 0.95); */
-        backdrop-filter: blur(5px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s ease-in-out;
-        z-index: 99;
-    }
+   .nav-links {
+    background-image: url("tai-bui-sL1LebbKvf8-unsplash.jpg");
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease-in-out;
+    z-index: 99;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden; /* needed for overlay */
+}
+
+/* 🔥 overlay for blur + dark effect */
+.nav-links::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* controls visibility */
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
 
     .nav-links.active {
         right: 0;
@@ -122,44 +138,44 @@
 
 
 
-.content-box {
-    width: 100%;
-    order: 2;
-    text-align: center;
+    .content-box {
+        width: 100%;
+        order: 2;
+        text-align: center;
 
-    margin-top: 50px;
-}
-
-
-
-.hero-title {
-    font-size: 1.9rem;
-}
-
-.subtitle {
-    font-size: 1rem;
-    margin-bottom: 40px;
-    /* Space before resume button */
-}
-
-.resume-btn {
-    margin-top: 10px;
-    padding: 10px 40px;
-}
+        margin-top: 50px;
+    }
 
 
 
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+        /* Space before resume button */
+    }
+
+    .resume-btn {
+        margin-top: 10px;
+        padding: 10px 40px;
+    }
 
 
-/* 5. Socials (Bottom Center) */
-.socials {
-    order: 3;
-    position: relative;
-    bottom: 0;
-    margin-top: auto;
-    padding-top: 50px;
-    gap: 40px;
-}
+
+
+
+    /* 5. Socials (Bottom Center) */
+    .socials {
+        order: 3;
+        position: relative;
+        bottom: 0;
+        margin-top: auto;
+        padding-top: 50px;
+        gap: 40px;
+    }
 }
 
 
@@ -172,41 +188,50 @@
 @media screen and (max-width: 768px) {
 
     .about-video-section {
-        height: 40vh; /* Slightly taller to ensure content fits */
+        height: 40vh;
+        /* Slightly taller to ensure content fits */
         padding: 0 10px;
     }
 
     .about-wrapper {
-        gap: 0; /* Maintains your centering logic */
-        flex-direction: row; /* Forces it to stay horizontal */
+        gap: 0;
+        /* Maintains your centering logic */
+        flex-direction: row;
+        /* Forces it to stay horizontal */
         justify-content: center;
         width: 100%;
     }
 
     .about-title {
-        font-size: 20px !important; /* Significantly smaller to prevent wrapping */
+        font-size: 20px !important;
+        /* Significantly smaller to prevent wrapping */
         min-width: fit-content;
     }
 
     .divider {
-        margin: 0 15px; /* Reduced spacing between elements */
-        width: 2px; /* Thinner line for mobile */
+        margin: 0 15px;
+        /* Reduced spacing between elements */
+        width: 2px;
+        /* Thinner line for mobile */
     }
 
     /* Adjusting the JS trigger for the line height on mobile */
     .show-line {
-        height: 250px !important; /* Shorter vertical line */
+        height: 250px !important;
+        /* Shorter vertical line */
     }
 
     .about-right {
-        max-width: 180px; /* Constrains text width to fit next to title */
+        max-width: 180px;
+        /* Constrains text width to fit next to title */
     }
 
     .about-right p {
 
         font-family: 'Courier New', Courier, monospace;
 
-        font-size: 15px; /* Smaller body text */
+        font-size: 15px;
+        /* Smaller body text */
         line-height: 1.4;
     }
 
@@ -223,19 +248,12 @@
     .about-title {
         font-size: 14px;
     }
+
     .about-right {
         max-width: 140px;
     }
+
     .divider {
         margin: 0 10px;
     }
 }
-
-
-
-
-
-
-
-
-
