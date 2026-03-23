@@ -1,152 +1,123 @@
-  const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.getElementById('nav-list');
+/* ==========================================
+   1. GLOBAL SELECTORS & SETUP
+   ========================================== */
+const isMobile = window.innerWidth < 768;
+const card = document.getElementById("card");
+const aboutSection = document.querySelector('.about-cinematic');
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
 
-    menuToggle.addEventListener('click', () => {
-        navList.classList.toggle('active');
+let mouseX = 0;
+let mouseY = 0;
+
+/* ==========================================
+   2. UNIFIED CURSOR & TILT (Desktop + Mobile)
+   ========================================== */
+// Desktop Mouse Logic
+if (!isMobile) {
+    document.addEventListener('mousemove', (e) => {
+        updatePositions(e.clientX, e.clientY);
+    });
+} else {
+    // Mobile Touch Logic (Cursor follows finger)
+    document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        updatePositions(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    // Accelerometer Tilt for Mobile
+  // Boosted Tilt Sensitivity for Mobile
+window.addEventListener('deviceorientation', (e) => {
+    // We removed the "/ 2" divider to make it rotate faster/more intensely
+    // Gamma: Left/Right tilt (-90 to 90)
+    // Beta: Front/Back tilt (-180 to 180)
+    mouseX = e.gamma; 
+    mouseY = e.beta;
+    
+    // Optional: Add a limit so the card doesn't flip entirely upside down
+    mouseX = Math.max(-30, Math.min(30, mouseX)); 
+    mouseY = Math.max(-30, Math.min(30, mouseY));
+    
+    updateCardTransform();
+});
+}
+
+function updatePositions(x, y) {
+    if (cursor && follower) {
+        cursor.style.left = x + 'px';
+        cursor.style.top = y + 'px';
         
-        // Optional: Toggle icon between bars and X
-        const icon = menuToggle.querySelector('i');
-        if (navList.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
-        });
-    });
-
-
-
-
-        new Typed(".typing",{
-    strings:[
-        "modern websites",
-        "full-stack applications",
-        "responsive designs",
-        "UI/UX designs",
-    ],
-    typeSpeed:60,
-    backSpeed:40,
-    backDelay:1500,
-    loop:true
-});
-
-
-
-
-
-
-
-
-
-window.addEventListener("load", () => {
-
-    const title = document.querySelector(".about-title");
-    const line = document.querySelector(".divider");
-    const wrapper = document.querySelector(".about-wrapper");
-    const text = document.querySelector(".about-right");
-
-    setTimeout(() => {
-        title.classList.add("show-title");
-    }, 300);
-
-    setTimeout(() => {
-        line.classList.add("show-line");
-    }, 800);
-
-    setTimeout(() => {
-        wrapper.classList.add("move-left");
-    }, 1200);
-
-    setTimeout(() => {
-        text.classList.add("show-text");
-    }, 1600);
-
-});
-
-
-
-
-
-
-
-
-
-document.querySelectorAll(".portfolio-page-wrapper .video-box").forEach(box => {
-            const video = box.querySelector("video");
-            const overlay = box.querySelector(".video-overlay");
-            const icon = overlay.querySelector("i");
-
-            overlay.addEventListener("click", () => {
-                if (video.paused) {
-                    video.play();
-                    box.classList.add("playing");
-                    // Switch play icon to pause icon
-                    icon.classList.remove("fa-play");
-                    icon.classList.add("fa-pause");
-                } else {
-                    video.pause();
-                    box.classList.remove("playing");
-                    // Switch pause icon to play icon
-                    icon.classList.remove("fa-pause");
-                    icon.classList.add("fa-play");
-                }
-            });
-
-            // Optional: Reset icon when video ends
-            video.addEventListener("ended", () => {
-                box.classList.remove("playing");
-                icon.classList.remove("fa-pause");
-                icon.classList.add("fa-play");
-            });
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-        const scrollText = document.getElementById("scrollText");
-
-const sections = [
-    {
-        id: ".hero-container",
-        text: "scroll."
-    },
-    {
-        id: "#aboutSection",
-        text: "read? go next."
-    },
-    {
-        id: ".portfolio-page-wrapper",
-        text: "still here? nice."
+        setTimeout(() => {
+            follower.style.left = x + 'px';
+            follower.style.top = y + 'px';
+        }, 50);
     }
-];
 
-window.addEventListener("scroll", () => {
-    let current = "";
+    // Update rotation values
+    mouseX = (window.innerWidth / 2 - x) / 20;
+    mouseY = (window.innerHeight / 2 - y) / 20;
+    updateCardTransform();
+}
 
-    sections.forEach(sec => {
-        const element = document.querySelector(sec.id);
-        const rect = element.getBoundingClientRect();
+/* ==========================================
+   3. STAR FIELD (Optimized)
+   ========================================== */
+let stars = [];
+function initStars() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    stars = [];
+    const starCount = isMobile ? 150 : 400; 
+    for (let i = 0; i < starCount; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * (isMobile ? 1.5 : 2),
+            speed: Math.random() * 0.5 + 0.1
+        });
+    }
+}
 
-        if (rect.top <= window.innerHeight / 2) {
-            current = sec.text;
-        }
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    let zoom = 1 + (window.scrollY / (isMobile ? 800 : 1500)); 
+
+    stars.forEach(star => {
+        ctx.beginPath();
+        let x = (star.x - canvas.width / 2) * zoom + canvas.width / 2;
+        let y = (star.y - canvas.height / 2) * zoom + canvas.height / 2;
+        ctx.arc(x, y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) star.y = 0;
     });
+    requestAnimationFrame(drawStars);
+}
 
-    scrollText.textContent = current;
-});
+/* ==========================================
+   4. TRANSFORM LOGIC
+   ========================================== */
+function updateCardTransform() {
+    if (!card) return;
+    const scrollValue = window.scrollY;
+    const sectionOffset = aboutSection.offsetTop;
+    const distance = scrollValue - sectionOffset;
+
+    let scale = 1;
+    if (scrollValue > sectionOffset - window.innerHeight) {
+        let sensitivity = isMobile ? 1000 : 2500; 
+        scale = 1 + (distance / sensitivity);
+        scale = Math.max(0.8, Math.min(scale, 1.3)); 
+    }
+
+    // Works for both Mouse and Tilting Phone
+    card.style.transform = `scale(${scale}) rotateY(${mouseX}deg) rotateX(${-mouseY}deg)`;
+}
+
+window.addEventListener('scroll', updateCardTransform);
+window.addEventListener("resize", initStars);
+initStars();
+drawStars();

@@ -29,326 +29,152 @@
 
 html,
 body {
-    background-color: #000000;
-
     width: 100%;
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+    background: transparent !important;
+    /* 🔥 IMPORTANT */
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 
 
 
-/* navbar */
+/* ================= TECHIE GALAXY NAVBAR ================= */
 nav {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 80px; /* Slimmer for a cleaner look */
     padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 100;
     box-sizing: border-box;
-
-
-
-
+    /* The Glass HUD Effect */
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.1);
 }
 
+/* THE DATA SCANLINE (Bottom of Navbar) */
+nav::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 150px; /* Small scanning segment */
+    height: 1px;
+    background: #00d9ff;
+    box-shadow: 0 0 10px #00d9ff;
+    animation: navScan 4s linear infinite;
+}
+
+/* ================= TECHIE ICON NAV ================= */
 .nav-links {
-    font-size: 13px;
-    letter-spacing: 3px;
-    font-weight: 300;
-
-    color: rgba(255, 255, 255, 0.7);
-
-}
-
-.nav-links span {
-    margin: 0 10px;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.logo-img {
-    height: 45px;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    gap: 30px; /* Space out the links properly */
+    align-items: center;
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Gap between icon and text */
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border: 1px solid transparent;
 }
 
+/* Icon Styling - Tiny & Crisp */
+.nav-links i {
+    font-size: 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect: The "Active Selection" box */
 .nav-links a:hover {
-    color: #fff;
+    color: #00d9ff;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+    background: rgba(0, 217, 255, 0.05);
+    border-radius: 4px;
 }
 
-.menu-toggle {
-    display: none;
+.nav-links a:hover i {
+    opacity: 1;
+    color: #00d9ff;
+    transform: scale(1.1);
 }
 
+/* Active State: The Coder Gold Focus */
 .nav-links .active {
-    color: rgb(240, 177, 127);
-    font-weight: 400;
+    color: #ffaa00 !important;
+    border-bottom: 1px solid #ffaa00;
 }
 
-/* navbar end */
+.nav-links .active i {
+    color: #ffaa00;
+    opacity: 1;
+}
 
+
+/* The separators | */
+.nav-links span {
+    margin: 0 20px;
+    color: rgba(0, 217, 255, 0.2);
+    font-weight: 100;
+}
+
+
+/* Hover Effect: Digital Glow */
+.nav-links a:hover {
+    color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+}
+
+/* Active Link: The Coder Orange/Gold focus */
+.nav-links .active {
+    color: #ffaa00 !important; /* Brighter gold for better contrast */
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(255, 170, 0, 0.5);
+}
+
+.logo-img {
+    height: 40px;
+    filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.4));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* SCANLINE ANIMATION */
+@keyframes navScan {
+    0% { left: -10%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+}
 
 
 
 /* hero banner */
 
-/* 1. Remove the negative z-index */
 #bg-video {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-
-
-}
-
-
-
-
-.hero-container {
-
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    color: #fff;
-    box-sizing: border-box;
-    overflow: hidden;
-    z-index: 10;
-    align-items: center;
-
-    justify-content: flex-start;
-    padding-left: 80px;
-}
-
-
-
-/* Left Side Content */
-.content-box {
-    z-index: 5;
-    width: 40%;
-    text-align: left !important;
-
-
-}
-
-/* .name {
-    font-size: 2.5rem;
-    font-family: 'CodeBars', sans-serif;
-    letter-spacing: 5px;
-    color: rgb(149, 195, 209);
-
-}
-
-.subtitle {
-    font-size: 1.7rem;
-    letter-spacing: 3px;
-    margin-top: 10px;
-    color: rgba(236, 185, 108, 0.8);
-    margin-bottom: 50px;
-
-    font-family: 'Hunters', sans-serif;
-
-}
-
-.typing {
-    color: #ffffff;
-    font-weight: 500;
-} */
-
-
-.resume-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 30px;
-    /* background: var(--glass-bg); */
-    border: 3px solid var(--glass-border);
-    border-radius: 10px;
-    color: #c5b797;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 2px;
-    backdrop-filter: blur(12px);
-    transition: all .4s;
-
-    /* margin-top: 30px; */
-}
-
-.resume-btn i {
-    margin-left: 10px;
-    font-size: 16px;
-    transition: transform .3s;
-}
-
-.resume-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: scale(1.05);
-    box-shadow: 0 0 30px var(--glow-color);
-}
-
-.resume-btn:hover i {
-    transform: translateY(3px);
-}
-
-
-/* .tech-cloud {
-    position: relative;
-    width: 40%;
-    height: 50vh;
-    z-index: 5;
-}
-
-.floating-icon {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(2px);
-    border-radius: 20px;
-    color: #fff;
-    font-size: 1.2rem;
-    animation: drift 8s ease-in-out infinite;
-}
-
-.i1 {
-    top: 10%;
-    left: 110%;
-}
-
-.i2 {
-    top: 15%;
-    left: 90%;
-    animation-delay: 1s;
-}
-
-.i3 {
-    top: 34%;
-    left: 110%;
-    animation-delay: 2s;
-}
-
-.i4 {
-    top: 50%;
-    left: 95%;
-    animation-delay: 3s;
-}
-
-.i5 {
-    top: 65%;
-    left: 115%;
-    animation-delay: 4s;
-}
-
-.i6 {
-    top: 76%;
-    left: 87%;
-    animation-delay: 5s;
-}
-
-.i7 {
-    top: 30%;
-    left: 85%;
-    animation-delay: 2.5s;
-}
-
-@keyframes drift {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(10px, -15px);
-    }
-}
-
-
- */
-
-.socials {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 95px;
-    z-index: 10;
-}
-
-.socials a {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1rem;
-    transition: color .3s, transform .3s;
-}
-
-.socials a:hover {
-    color: #fff;
-    transform: translateY(-5px);
-}
-
-
-
-
-
-
-
-.about-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.5);
-    /* dark overlay */
-
-    z-index: 2;
-    /* above video */
-}
-
-/* make sure content is above overlay */
-.about-wrapper {
-    position: relative;
-    z-index: 3;
-}
-
-
-
-
-.about-video-section {
-    position: relative !important;
-    top: 0;
-    height: 65vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 5 !important;
-    background: transparent !important;
-
-}
-
-.video-bg {
-    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -359,185 +185,57 @@ nav {
 
 
 
-.about-wrapper {
+
+
+
+
+
+/* ================= HERO CONTAINER (Balanced Visibility) ================= */
+/* ================= HERO CONTAINER (CENTERED) ================= */
+.hero-container {
     position: relative;
-    z-index: 5;
+    height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    transition: all 1s ease-in-out;
-}
-
-
-
-.about-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 42px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-
-    /* 🔥 gradient text */
-    background: linear-gradient(90deg, #38bdf8, #a855f7, #f97316);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    /* glow effect */
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5),
-        0 0 12px rgba(168, 85, 247, 0.4);
-
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.8s ease;
+    /* --- THE CENTER FIX --- */
+    align-items: center;      /* Centers vertically */
+    justify-content: center;   /* Centers horizontally */
+    
+    padding: 0;                /* Remove padding-left to keep it dead center */
+    overflow: hidden;
+    background-color: #000;
+    
+    /* Radial glow centered in the middle now */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
 }
 
 
 
 
-.about-right {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    max-width: 420px;
-    color: #cbd5f5;
-
-    text-shadow: 0 0 6px rgba(56, 189, 248, 0.2);
-
-    opacity: 0;
-    transform: translateX(50px);
-    transition: 0.8s ease;
-}
-
-
-
-
-.divider {
-    width: 2px;
-    height: 0px;
-    margin: 0 40px;
-    transition: 1s ease;
-    opacity: 0;
-
-    /* 🔥 sharp needle gradient */
-    background: linear-gradient(to bottom,
-            transparent 0%,
-            #a855f7 20%,
-            #f97316 80%,
-            transparent 100%);
-
-    /* ✨ glow */
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.5),
-        0 0 12px rgba(249, 115, 22, 0.5);
-}
-
-
-/* .divider {
-    width: 2px;
-    height: 0px;
-    margin: 0 40px;
-    transition: 1s ease;
-    opacity: 0;
-
-    background: linear-gradient(
-        to bottom,
-        #a855f7,
-        #f97316
-    );
-
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6),
-                0 0 10px rgba(249, 115, 22, 0.6);
-
-    position: relative;
-} */
-
-
-
-
-/* --- JS Trigger Classes --- */
-.show-title {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.show-line {
-    height: 300px;
-    opacity: 1;
-}
-
-.move-left {
-    gap: 20px;
-}
-
-.show-text {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.about-btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 8px 25px;
-    border: 2px solid #d8980d;
-    border-radius: 3px;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
-    background: #a855f7;
-
-}
-
-.about-btn:hover {
-    background: #c0a1dd;
-    box-shadow: 0 0 20px rgba(194, 174, 212, 0.6);
-}
-
-
-
-
-.about-gif {
-
-    width: 110px;
-    display: block;
-    margin: 0 auto 10px auto;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.about-email {
+/* THE TECH OVERLAY (Lightened to show video) */
+.hero-container::before {
+    content: "";
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    inset: 0;
+    /* Reduced to 0.04 (was 0.08) for a lighter grid */
+    background-image: 
+        linear-gradient(rgba(0, 217, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+}
 
-    font-size: 14px;
-    letter-spacing: 2px;
-
-    color: #f19dc7;
-
-    font-family: 'Inter', sans-serif;
-
-
+/* THE GLOW SHIELD (Adds a very soft tint behind text, not the whole screen) */
+.hero-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Only covers the left side where the text is */
+    height: 100%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.9), transparent);
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -549,21 +247,335 @@ nav {
 
 
 
+/* --- THE CONTENT BOX --- */
+.content-box {
+    z-index: 5;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.intro {
+    font-size: 1rem;
+    color: #38BDF8;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+
+
+
+
+
+
+
+.hero-interface {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Large gap to prevent the messy overlap */
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- STATUS & PROGRESS LAYERS --- */
+.status-content, .progress-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.label {
+    font-size: 11px;
+    color: rgba(0, 217, 255, 0.5); /* Sky Blue tint */
+    letter-spacing: 2px;
+}
+
+.value {
+    font-size: 11px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.6);
+}
+
+/* --- THE NAME (Large & Sharp) --- */
+.hero_name {
+    font-size: 4.5rem; 
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    /* Clean, crisp drop shadow */
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3));
+}
+
+.line-decorator {
+    width: 100%;
+    max-width: 500px;
+    height: 1px;
+    background: linear-gradient(90deg, #00d9ff, transparent);
+    opacity: 0.2;
+    margin-top: 10px;
+}
+
+/* --- ANIMATION --- */
+@keyframes scanner {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(450%); }
+}
+
+
+
+/* ================= SUBTITLE (System Terminal Style) ================= */
+.subtitle-frame {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace; /* Best for tech look */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The [ ] Brackets */
+.tech-bracket {
+    color: #00d9ff;
+    font-weight: 300;
+    opacity: 0.5;
+    animation: bracketPulse 2s infinite ease-in-out;
+}
+
+.typing {
+    color: #00d9ff;
+    font-weight: 700;
+    /* Neon Glow */
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.7), 
+                 0 0 20px rgba(0, 217, 255, 0.3);
+    position: relative;
+    padding-right: 8px;
+}
+
+/* THE TECH CURSOR (Replacing the boring border) */
+.typing::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 10%;
+    width: 3px;
+    height: 80%;
+    background: #00d9ff;
+    box-shadow: 0 0 12px #00d9ff;
+    animation: blinkCursor 0.8s step-end infinite;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes blinkCursor {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes bracketPulse {
+    0%, 100% { transform: scaleX(1); opacity: 0.4; }
+    50% { transform: scaleX(1.3); opacity: 1; }
+}
+
+
+
+/* ================= THE RESUME BUTTON (The style you liked) ================= */
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 12px 35px;
+    background: rgba(0, 217, 255, 0.05);
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+    /* Geometric Tech Cut */
+    clip-path: polygon(0% 0%, 90% 0%, 100% 30%, 100% 100%, 10% 100%, 0% 70%);
+}
+
+.resume-btn i {
+    margin-left: 15px;
+    transition: transform 0.3s;
+}
+
+.resume-btn:hover {
+    background: #00d9ff;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+}
+
+
+
+
+
+/* --- THE MAIN HUB POSITION (Bottom Left) --- */
+.tech-social-hub {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+}
+
+/* --- VERTICAL DATA RAIL --- */
+.social-rail {
+    position: absolute;
+    left: 0;
+    top: -40px;
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, #00d9ff);
+    box-shadow: 0 0 8px #00d9ff;
+}
+
+/* --- THE LINKS & LABELS --- */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: #00d9ff;
+}
+
+/* --- HOVER EFFECTS --- */
+.social-item:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.social-item:hover .social-label {
+    opacity: 1;
+    transform: translateX(0);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
+}
+
+.social-item:hover i {
+    filter: drop-shadow(0 0 8px #00d9ff);
+    color: #00d9ff;
+}
+
+/* --- BASE DECORATION --- */
+.social-base-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, #00d9ff, transparent);
+    margin-top: 10px;
+    position: relative;
+}
+
+.social-base-line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    background: #00d9ff;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px #00d9ff;
+}
+
+
+
+
+
+
+
+
+
+
 /* SCOPED PORTFOLIO STYLES */
 .portfolio-page-wrapper {
-
-    z-index: 10;
-    /* Higher than the video z-index */
     position: relative;
-    /* Crucial: allows z-index to work */
-    background: #000;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 0;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    /* Keeps the glow effects inside */
+    z-index: 10;
+
+    /* GALAXY GRADIENT LAYER */
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(140, 0, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 10, 30, 1), #000);
+
+    background-color: #000;
+    background-size: 200% 200%;
+    animation: nebulaMove 15s ease infinite;
+}
+
+/* NEBULA ANIMATION - Makes the colors drift slowly */
+@keyframes nebulaMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ADD THIS: A subtle overlay to add "Deep Space" texture */
+.portfolio-page-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-image:
+        url('https://www.transparenttextures.com/patterns/stardust.png');
+    /* Subtle grain/dust */
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* HEADING */
@@ -572,17 +584,138 @@ nav {
     margin-bottom: 80px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .portfolio-page-wrapper .heading-area h1 {
-    font-size: 2.2rem;
-    letter-spacing: 6px;
-    font-weight: 300;
-    border-bottom: 1px solid white;
-    padding-bottom: 10px;
-    display: inline-block;
+    font-size: 5rem;
+    font-weight: 100;
+    letter-spacing: 30px;
     text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    padding: 100px 0;
+
+    /* Unique layout: Align left with a floating line */
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+
+    /* Cross-hair style decor */
+    position: relative;
+    border-top: 2px solid #fff;
 }
 
+/* Add a coordinate tracker effect */
+.portfolio-page-wrapper .heading-area h1::after {
+    content: "00.00.00 // PORTFOLIO";
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #00d9ff;
+}
+
+
+
+.portfolio-page-wrapper .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    /* Big video, narrow sidebar */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* No border radius = looks more like an industrial monitor */
+    border-radius: 0;
+}
+
+.description-box {
+    background: transparent;
+    /* Remove glass, keep it transparent */
+    border: none;
+    border-left: 1px solid #00d9ff;
+    /* Industrial accent */
+    padding-left: 20px;
+    margin-top: 0;
+}
+
+
+
+
+
+
+
 .portfolio-page-wrapper .heading-description {
+    max-width: 650px;
+    margin: 35px auto 0;
+
+    /* FONT & COLOR */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #a8a8a8;
+    /* Dimmed for hierarchy */
+
+    /* TECH LAYOUT */
+    text-align: left;
+    /* Justified text looks like a book; Left-aligned looks like code */
+    letter-spacing: 0.8px;
+    padding: 25px;
+
+    /* THE "TERMINAL" FRAME */
+    background: rgba(255, 255, 255, 0.02);
+    /* Ghost-like transparency */
+    border-left: 2px solid #00d9ff;
+    /* The "Active Line" in an IDE */
+    border-radius: 0 8px 8px 0;
+
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+/* THE CODING COMMENT TAG */
+.portfolio-page-wrapper .heading-description::before {
+    content: "[ INDEX // SELECTED_WORKS ]";
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: #00d9ff;
+    margin-bottom: 12px;
+    letter-spacing: 3px;
+    opacity: 0.8;
+}
+
+/* THE TERMINAL DECOR (Bottom Right) */
+.portfolio-page-wrapper .heading-description::after {
+    content: "</summary>";
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* .portfolio-page-wrapper .heading-description {
     max-width: 700px;
     margin: 25px auto 0;
     font-size: 0.95rem;
@@ -591,7 +724,7 @@ nav {
     text-align: justify;
     text-align-last: center;
     letter-spacing: 0.5px;
-}
+} */
 
 /* PROJECT WRAPPER */
 .portfolio-page-wrapper .main-layout {
@@ -604,7 +737,7 @@ nav {
 }
 
 /* PROJECT TITLE */
-.portfolio-page-wrapper .project-title-outside {
+/* .portfolio-page-wrapper .project-title-outside {
     width: 1091px;
     text-align: left;
     font-size: 1.1rem;
@@ -613,7 +746,64 @@ nav {
     margin-bottom: 15px;
     margin-left: 55px;
     opacity: 0.9;
+} */
+
+
+
+
+
+
+
+/* ================= PROJECT TITLE: LUXURY EDITORIAL VIBE ================= */
+.portfolio-page-wrapper .project-title-outside {
+    width: 100%;
+    max-width: 1100px;
+    margin: 80px auto 40px;
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem; /* Larger, more cinematic */
+    font-weight: 200; /* Extremely thin/light */
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 12px; /* Very wide for a 'high-fashion' feel */
+    
+    display: flex;
+    align-items: center;
+    position: relative;
 }
+
+/* The 'Signature' Dot: Replaces the numbers with a simple glowing accent */
+.portfolio-page-wrapper .project-title-outside::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #00d9ff;
+    margin-right: 20px;
+    box-shadow: 0 0 15px #00d9ff;
+}
+
+/* Optional: Subtitle for context, keeps it clean */
+.portfolio-page-wrapper .project-title-outside::after {
+    content: "[ LIVE_ON_NETLIFY ]"; /* Small context label below the big title */
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
 
 /* CONTENT ROW */
 .portfolio-page-wrapper .content-row {
@@ -623,32 +813,106 @@ nav {
 }
 
 /* VERTICAL TEXT */
-.portfolio-page-wrapper .brand-vertical {
+/* .portfolio-page-wrapper .brand-vertical {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     font-size: 1.1rem;
     letter-spacing: 3px;
     opacity: 0.6;
     margin-right: 20px;
+} */
+
+
+/* ================= VERTICAL BRAND TEXT ================= */
+.portfolio-page-wrapper .brand-vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.9rem;
+    /* Slightly smaller is more "luxury" */
+    letter-spacing: 5px;
+    /* Increased spacing for that premium look */
+    text-transform: uppercase;
+    color: rgba(0, 217, 255, 0.5);
+    /* Cyan tint to match galaxy */
+
+    opacity: 0.7;
+    margin-right: 30px;
+    white-space: nowrap;
+
+    /* Subtle Starlight Glow */
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+
+    /* Animation: Subtle breathing effect */
+    animation: textPulse 4s ease-in-out infinite;
+    transition: 0.3s ease;
+    cursor: default;
 }
 
-/* VIDEO BOX */
+.portfolio-page-wrapper .brand-vertical:hover {
+    opacity: 1;
+    color: #00d9ff;
+    text-shadow: 0 0 15px #00d9ff;
+}
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        text-shadow: 0 0 5px rgba(0, 217, 255, 0.2);
+    }
+
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    }
+}
+
+/* Hide on Mobile/Tablet so it doesn't break the layout */
+@media (max-width: 1024px) {
+    .portfolio-page-wrapper .brand-vertical {
+        display: none;
+    }
+}
+
+
+
+
+
+/* ================= VIDEO BOX (Fully Responsive) ================= */
 .portfolio-page-wrapper .video-box {
-    width: 1091px;
-    height: 540px;
-    background: #1a1a1a;
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+    /* MAGIC PROPERTY: Keeps height perfect */
+
+    background: #000;
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
+
+    /* Galaxy Border Match */
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, border-color 0.4s ease;
 }
 
+.portfolio-page-wrapper .video-box:hover {
+    border-color: rgba(0, 217, 255, 0.5);
+    transform: scale(1.01);
+    /* Subtle "pop" on hover */
+}
+
+/* ================= VIDEO ELEMENT ================= */
 .portfolio-page-wrapper video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: black;
+    object-fit: cover;
+    /* "cover" fills the box; "contain" shows black bars */
+    display: block;
 }
 
-/* VIDEO OVERLAY */
+/* ================= VIDEO OVERLAY (The Play Button) ================= */
 .portfolio-page-wrapper .video-overlay {
     position: absolute;
     top: 0;
@@ -658,28 +922,49 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.35);
+
+    /* Luxury glass effect for the overlay */
+    background: rgba(0, 0, 0, 0.4);
+    /* backdrop-filter: blur(2px);  */
+
     cursor: pointer;
-    transition: 0.4s;
+    transition: opacity 0.4s ease;
     z-index: 1;
 }
 
-.portfolio-page-wrapper .video-overlay i {
-    font-size: 50px;
-    color: white;
-    opacity: 0.9;
-    transition: 0.3s;
+/* Add to your main CSS file */
+video {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: -webkit-optimize-contrast;
+    /* Forces sharper rendering */
 }
 
+.portfolio-page-wrapper .video-overlay i {
+    font-size: 60px;
+    /* Slightly larger for luxury feel */
+    color: #00d9ff;
+    /* Matching your cyan theme */
+    /* filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.8)); */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.portfolio-page-wrapper .video-overlay:hover i {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 25px #00d9ff);
+}
+
+/* Hide overlay when playing */
 .portfolio-page-wrapper .video-box.playing .video-overlay {
     opacity: 0;
     pointer-events: none;
 }
 
-.portfolio-page-wrapper .video-box:hover .video-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
+
+
+
+
+
 
 /* SIDE CONTENT */
 .portfolio-page-wrapper .side-content {
@@ -687,69 +972,203 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     height: 480px;
-    margin-left: -40px;
+    margin-left: -60px;
     z-index: 2;
-    width: 280px;
+    width: 300px;
+    flex-shrink: 0;
 }
 
-/* DESCRIPTION */
+
+/* ================= DESCRIPTION BOX (Galaxy Match) ================= */
 .portfolio-page-wrapper .description-box {
     font-size: 0.9rem;
     line-height: 1.9;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-top: 70px;
-    padding: 28px 42px;
-    background: rgba(15, 15, 15, 0.9);
-    backdrop-filter: blur(10px);
-    color: #f5f5f5;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 40px;
+
+    /* Deep Space Glass Effect */
+    background: rgba(5, 10, 20, 0.8);
+    /* Darker, slightly blue-tinted black */
+    backdrop-filter: blur(15px);
+    /* Stronger blur for premium feel */
+    -webkit-backdrop-filter: blur(15px);
+
+    color: #e0f7ff;
+    /* Soft cyan-white text for better readability */
+    border-radius: 8px;
+
+    /* Neon Nebula Glow Border */
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    box-shadow:
+        0 0 20px rgba(0, 217, 255, 0.1),
+        /* Subtle outer cyan glow */
+        inset 0 0 15px rgba(140, 0, 255, 0.1);
+    /* Subtle inner purple glow */
+
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* LINKS */
+/* Sub-glow effect on hover */
+.portfolio-page-wrapper .description-box:hover {
+    border-color: rgba(0, 217, 255, 0.6);
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Optional: Small accent line at the top of the box */
+.portfolio-page-wrapper .description-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d9ff, transparent);
+}
+
+
+
+
+/* ================= LINKS GROUP ================= */
 .portfolio-page-wrapper .links-group {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    /* Slightly more breathing room */
     align-items: flex-start;
-    margin-left: 100px;
+    margin-left: 40px;
+    z-index: 5;
 }
 
+/* ================= LINK ITEM ================= */
 .portfolio-page-wrapper .link-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 120px;
+    gap: 15px;
+    /* Space between text and icon */
     text-decoration: none;
-    color: #fff;
-    transition: 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.portfolio-page-wrapper .link-item:hover {
-    opacity: 0.7;
-    transform: translateX(5px);
-}
-
+/* ================= GALAXY ICON CIRCLE ================= */
 .portfolio-page-wrapper .link-item i {
-    background: #fff;
-    color: #000;
-    width: 40px;
-    height: 40px;
+    /* Glassmorphism Icon Base */
+    background: rgba(0, 217, 255, 0.1);
+    color: #00d9ff;
+    /* Cyan glow text/icon */
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
 }
 
+/* ================= HOVER STATES ================= */
+.portfolio-page-wrapper .link-item:hover {
+    color: #fff;
+    transform: translateX(10px);
+    /* Moves into the space */
+    opacity: 1;
+}
+
+.portfolio-page-wrapper .link-item:hover i {
+    background: #00d9ff;
+    /* Fills with light on hover */
+    color: #000;
+    /* Dark icon on bright bg */
+    box-shadow:
+        0 0 25px #00d9ff,
+        0 0 50px rgba(0, 217, 255, 0.4);
+    transform: rotate(360deg);
+    /* Cinematic spin */
+}
+
+/* ================= MOBILE ADJUSTMENT ================= */
+@media (max-width: 1024px) {
+    .portfolio-page-wrapper .links-group {
+        flex-direction: row;
+        /* Stack side-by-side on mobile */
+        justify-content: center;
+        margin-left: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .portfolio-page-wrapper .link-item {
+        flex-direction: column;
+        /* Icon on top, text on bottom */
+        font-size: 0.7rem;
+        gap: 8px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /* LINE */
-.portfolio-page-wrapper .bottom-line {
+/* .portfolio-page-wrapper .bottom-line {
     width: 80%;
     height: 1px;
     background: rgba(255, 255, 255, 0.2);
     margin-top: 40px;
     margin-right: auto;
 }
+ */
+
+
+/* ================= THE GALACTIC SEPARATOR ================= */
+.portfolio-page-wrapper .bottom-line {
+    width: 80%;
+    height: 1px;
+    /* Keep it thin for luxury feel */
+    margin-top: 60px;
+    margin-right: auto;
+    position: relative;
+
+    /* Gradient that fades into the "void" */
+    background: linear-gradient(90deg,
+            rgba(0, 217, 255, 0.8) 0%,
+            rgba(140, 0, 255, 0.3) 50%,
+            transparent 100%);
+
+    /* Subtle neon glow */
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+}
+
+/* ADDING A "STAR" AT THE START OF THE LINE */
+.portfolio-page-wrapper .bottom-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #00d9ff;
+}
 
 
 
@@ -767,32 +1186,145 @@ nav {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ABOUT SECTION ================= */
+/* REPLACE THIS SECTION */
+.about-cinematic {
+    position: relative;
+    min-height: 100vh;
+    /* Changed to min-height for content safety */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    /* Solid background to hide the fixed video if using fixed */
+    z-index: 3;
+    /* Higher than hero-container */
+}
+
+/* Ensure the canvas doesn't break the layout */
+#stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================= ABOUT CONTENT ================= */
+.about-content {
+    perspective: 1200px;
+    z-index: 2;
+}
+
+/* ================= CARD ================= */
+.card {
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Makes mouse tilt silky smooth */
+    will-change: transform;
+}
+
+/* ================= NAME ================= */
 .name {
-    font-size: 2.5rem;
-    font-family: 'CodeBars', sans-serif;
-    letter-spacing: 5px;
-    color: #38BDF8;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 10px #00d9ff,
+        0 0 30px #00d9ff,
+        0 0 60px #008cff;
+
+    transform: translateZ(80px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+
+    text-align: center !important;
+    /* Added this to fix the "too left" issue */
+
 }
 
-.subtitle {
-    font-size: 1.7rem;
-    letter-spacing: 3px;
+/* ================= ROLE ================= */
+.role {
     margin-top: 10px;
-    margin-bottom: 50px;
-    font-family: 'Hunters', sans-serif;
-    color: #FB923C;
+    font-size: 1.5rem;
+    color: #aaa;
+    letter-spacing: 3px;
+
+    transform: translateZ(60px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 0.5s;
 }
 
-.typing {
-    color: #FACC15;
-    font-weight: 500;
+/* ================= DESC ================= */
+.desc {
+    margin-top: 20px;
+    max-width: 600px;
+    color: #ccc;
+    line-height: 1.7;
+
+    transform: translateZ(40px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1s;
 }
 
-.intro {
-    font-family: 'Hunters', sans-serif;
-    color: #B0BEC5;
-    letter-spacing: 4px;
+/* ================= BUTTON ================= */
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    text-decoration: none;
+
+    display: inline-block;
+
+    transform: translateZ(50px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1.5s;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00d9ff;
+    color: black;
+    box-shadow: 0 0 20px #00d9ff;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) translateZ(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(60px);
+    }
 }
 
 
@@ -803,37 +1335,139 @@ nav {
 
 
 
+/* Hide standard cursor to avoid conflict */
+body {
+    cursor: none;
+}
 
-.scroll-character {
+.cursor,
+.cursor-follower {
     position: fixed;
-    right: 30px; /* not too edge */
-    bottom: 60px;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+    z-index: 9999;
+}
 
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    left: -4px;
+    top: -4px;
+}
+
+.cursor-follower {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    left: -15px;
+    top: -15px;
+    transition: transform 0.2s ease, width 0.3s, height 0.3s, background 0.3s;
+}
+
+/* Magnetic Effect: When hovering over links/buttons */
+a:hover~.cursor-follower,
+button:hover~.cursor-follower,
+.btn:hover~.cursor-follower,
+.video-box:hover~.cursor-follower {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #00d9ff;
+}
+
+/* Fix for 3D depth on mobile */
+.about-content {
+    perspective: 1000px;
+    overflow: visible;
+    /* Crucial for 3D shadows/glows */
+}
+
+.cursor-follower.active {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 217, 255, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+/* --- SCROLL WIDGET POSITION --- */
+.scroll-widget {
+    position: fixed;
+    bottom: 40px;
+    right: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    z-index: 999;
+    gap: 15px;
+    cursor: pointer;
+    z-index: 100;
 }
 
-/* animal */
-.scroll-animal {
-    width: 65px;
-}
-
-/* message bubble */
 .scroll-text {
-    margin-top: 6px;
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #00d9ff;
+    letter-spacing: 3px;
+    writing-mode: vertical-rl; /* Techie vertical text */
+    text-orientation: mixed;
+    opacity: 0.6;
+    animation: pulseText 2s infinite ease-in-out;
+}
 
-    color: #e8d3b9;
-    background: rgba(0,0,0,0.6);
+/* --- THE GALAXY MOTION ANIMATION --- */
+.scroll-icon-container {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    padding: 4px 10px;
-    border-radius: 20px;
+.galaxy-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #00d9ff;
+    border-radius: 50%;
+    animation: ringExpand 2s infinite ease-out;
+    opacity: 0;
+}
 
-    font-family: 'Inter', sans-serif;
+.galaxy-ring.delay {
+    animation-delay: 1s;
+}
 
-    transition: 0.3s ease;
+.scroll-dot {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #00d9ff;
+    animation: dotFloat 2s infinite ease-in-out;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes ringExpand {
+    0% { transform: scale(0.5); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes dotFloat {
+    0%, 100% { transform: translateY(-5px); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
 }

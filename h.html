@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🌌 CANVAS BACKGROUND */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* SECTION */
+.about {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+}
+
+/* CARD */
+.card {
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+}
+
+/* NAME */
+.name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    color: #00d9ff;
+    text-shadow:
+        0 0 10px #00d9ff,
+        0 0 30px #00d9ff,
+        0 0 60px #008cff;
+    transform: translateZ(80px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+/* ROLE */
+.role {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #aaa;
+    letter-spacing: 3px;
+    transform: translateZ(60px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 0.5s;
+}
+
+/* DESC */
+.desc {
+    margin-top: 20px;
+    max-width: 600px;
+    color: #ccc;
+    line-height: 1.7;
+    transform: translateZ(40px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1s;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    text-decoration: none;
+    display: inline-block;
+    transform: translateZ(50px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1.5s;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00d9ff;
+    color: black;
+    box-shadow: 0 0 20px #00d9ff;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(60px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<section class="about">
+    <div class="card" id="card">
+        <h1 class="name">Jyothi Devappa</h1>
+        <h2 class="role">Full Stack Developer</h2>
+
+        <p class="desc">
+            Building immersive web experiences with modern technologies. 
+            Focused on performance, creativity, and next-level UI interactions 
+            that feel alive and engaging.
+        </p>
+
+        <a href="#" class="btn">View My Work</a>
+    </div>
+</section>
+
+
+
+
+<script>
+/* 🌌 STAR BACKGROUND */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+
+for (let i = 0; i < 120; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speed: Math.random() * 0.5
+    });
+}
+
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "white";
+
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+            star.y = 0;
+            star.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(drawStars);
+}
+
+drawStars();
+
+/* 🖱️ MOUSE 3D TILT */
+const card = document.getElementById("card");
+
+document.addEventListener("mousemove", (e) => {
+    let x = (window.innerWidth / 2 - e.clientX) / 25;
+    let y = (window.innerHeight / 2 - e.clientY) / 25;
+
+    card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+});
+</script>
+
+</body>
+</html>

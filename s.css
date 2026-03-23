@@ -1,0 +1,242 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background: transparent !important; /* 🔥 IMPORTANT */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= 🌌 GLOBAL GALAXY ================= */
+#stars {
+    position: absolute !important;   /* 🔥 NOT fixed */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 0 !important; /* 🔥 ABOVE VIDEO */
+    pointer-events: none;
+}
+
+/* ================= HERO VIDEO ================= */
+#bg-video {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 80px;
+
+    color: #fff;
+    z-index: 2; /* 🔥 ABOVE STARS */
+}
+
+/* ================= NAVBAR ================= */
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
+}
+
+.nav-links {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.7);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.logo-img {
+    height: 45px;
+}
+
+/* ================= HERO TEXT ================= */
+.content-box {
+    z-index: 5;
+    width: 40%;
+}
+
+.hero_name {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    color: #38BDF8;
+    text-shadow: 0 0 8px rgba(56,189,248,0.6);
+}
+
+.subtitle {
+    font-size: 1.7rem;
+    letter-spacing: 3px;
+    margin: 20px 0 50px;
+    color: #FB923C;
+}
+
+.resume-btn {
+    padding: 10px 30px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(0,150,255,0.6);
+}
+
+/* ================= SOCIAL ================= */
+.socials {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 60px;
+    z-index: 5;
+}
+
+.socials a {
+    color: rgba(255,255,255,0.5);
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: #fff;
+}
+
+/* ================= ABOUT SECTION ================= */
+.about-cinematic {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: black; /* ✅ needed now */
+    z-index: 2;
+}
+
+/* ================= ABOUT CONTENT ================= */
+.about-content {
+    perspective: 1200px;
+    z-index: 2;
+}
+
+/* ================= CARD ================= */
+.card {
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+}
+
+/* ================= NAME ================= */
+.name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 10px #00d9ff,
+        0 0 30px #00d9ff,
+        0 0 60px #008cff;
+
+    transform: translateZ(80px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+/* ================= ROLE ================= */
+.role {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #aaa;
+    letter-spacing: 3px;
+
+    transform: translateZ(60px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 0.5s;
+}
+
+/* ================= DESC ================= */
+.desc {
+    margin-top: 20px;
+    max-width: 600px;
+    color: #ccc;
+    line-height: 1.7;
+
+    transform: translateZ(40px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1s;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    text-decoration: none;
+
+    display: inline-block;
+
+    transform: translateZ(50px);
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards 1.5s;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00d9ff;
+    color: black;
+    box-shadow: 0 0 20px #00d9ff;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(60px);
+    }
+}

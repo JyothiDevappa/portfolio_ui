@@ -30,7 +30,6 @@
         </video>
 
 
-        <div class="overlay"></div>
 
 
         <nav>
@@ -38,12 +37,20 @@
                 <i class="fas fa-bars"></i>
             </div>
 
+
+
             <div class="nav-links" id="nav-list">
-                <a href="#" class="active" img src="images/logo-2.gif">HOME</a> <span>|</span>
-                <a href="pages/projectss.html">PROJECTS</a> <span>|</span>
-                <a href="#">ABOUT</a> <span>|</span>
-                <a href="#">CONTACT</a>
-            </div>
+    <a href="#" class="active">
+        <i class="fas fa-terminal"></i> HOME
+    </a>
+    <a href="pages/projectss.html">
+        <i class="fas fa-code-branch"></i> PROJECTS
+    </a>
+    <a href="#">
+        <i class="fas fa-microchip"></i> ABOUT
+    </a>
+  
+</div>
 
             <div class="logo">
                 <img src="images/logo-2.gif" alt="J Logo" class="logo-img">
@@ -56,14 +63,64 @@
 
         <div class="content-box">
 
-            <h1 class="hero-title">
-                <span class="intro">Hi, I'm</span>
-                <span class="name">JyothiDevappa</span>
+
+
+
+            <div class="hero-interface">
+                <div class="status-layer">
+                    <div class="status-content">
+                        <span class="label">CURRENT_STATUS:</span>
+                        <span class="value">BUILDING_WEBSITES</span>
+                    </div>
+                </div>
+
+                <div class="name-layer">
+
+                    <span class="intro">Hi, I'm</span>
+
+                    <h1 class="hero_name" data-value="JYOTHIDEVAPPA">JYOTHIDEVAPPA</h1>
+                </div>
+                <!-- 
+    <div class="progress-layer">
+        <div class="progress-content">
+            <span class="label">PROJECT_TRACKER:</span>
+            <div class="tech-progress">
+                <div class="progress-fill"></div>
+            </div>
+            <span class="value">WEBSITES_IN_PROGRESS...</span>
+        </div>
+        <div class="line-decorator"></div>
+    </div> -->
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </h1>
 
-            <p class="subtitle">
+
+
+            <div class="subtitle-frame">
+                <p class="subtitle">
+                    <span class="tech-bracket">[</span>
+                    I BUILD <span class="typing"></span>
+                    <span class="tech-bracket">]</span>
+                </p>
+            </div>
+
+            <!-- <p class="subtitle">
                 I BUILD <span class="typing"></span>
-            </p>
+            </p> -->
 
             <a href="resume.pdf" class="resume-btn" download>
                 RESUME <i class="fa-solid fa-circle-down"></i>
@@ -73,64 +130,56 @@
 
 
 
-        <div class="socials">
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#"><i class="fa-regular fa-envelope"></i></a>
-            <a href="#"><i class="fa-brands fa-github"></i></a>
+
+        <div class="tech-social-hub">
+            <div class="social-rail"></div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/jyothidevappa/" class="social-item" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span class="social-label">LINKEDIN</span>
+                </a>
+                <a href="mailto:your-email@gmail.com" class="social-item">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span class="social-label">MAIL_SERVER</span>
+                </a>
+            </div>
+
+            <div class="social-base-line"></div>
         </div>
+
+
+
+
+
     </div>
 
 
 
 
+    <section class="about-cinematic">
 
+        <canvas id="stars"></canvas>
 
+        <div class="about-content">
+            <div class="card" id="card">
 
+                <h1 class="name">Jyothi Devappa</h1>
 
-    <section class="about-video-section" id="aboutSection">
+                <h2 class="role">Full Stack Developer</h2>
 
-        <video autoplay muted loop playsinline class="video-bg">
-            <source src="videos/uhd_30fps.mp4" type="video/mp4">
-        </video>
-
-
-        <div class="about-overlay"></div>
-
-
-
-        <div class="about-wrapper">
-
-            <div class="about-left">
-                <img src="images/logo-1.gif" class="about-gif">
-                <h2 class="about-title">About Me</h2>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="about-right">
-                <p>
-                    I'm <strong>Jyothi Devappa</strong>, a passionate Full Stack Developer
-                    currently working as an intern. I love building modern, scalable web
-                    applications with clean UI and smooth user experience.
+                <p class="desc">
+                    Building immersive web experiences with modern technologies.
+                    Focused on performance, creativity, and next-level UI interactions
+                    that feel alive and engaging.
                 </p>
 
-                <a href="#" class="about-btn">Know More</a>
+                <a href="#" class="btn">View My Work</a>
+
             </div>
-
-
-
-
         </div>
 
-            <div class="about-email">jyothidevappas@gmail.com</div>
-
-
     </section>
-
-
-
-
-
 
 
 
@@ -155,6 +204,8 @@
             <div class="project-title-outside">J SCENTIQUE</div>
             <div class="content-row">
                 <div class="brand-vertical">j scentique</div>
+
+
                 <div class="video-box">
                     <video muted loop>
                         <source src="videos/perfume-vid.mp4" type="video/mp4">
@@ -258,27 +309,60 @@
 
 
 
+    <script>
+
+        const nameElement = document.querySelector(".hero_name");
+        const targetValue = nameElement.dataset.value;
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        function runOdometer() {
+            let iteration = 0;
+            clearInterval(nameElement.timer);
+
+            nameElement.timer = setInterval(() => {
+                nameElement.innerText = targetValue.split("")
+                    .map((letter, index) => {
+                        if (index < iteration) return targetValue[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+
+                if (iteration >= targetValue.length) clearInterval(nameElement.timer);
+                iteration += 1 / 3;
+            }, 50);
+        }
+
+        window.onload = runOdometer;
+        nameElement.onmouseenter = runOdometer;
 
 
 
+    </script>
 
-
-   
-
-
-
-
-    <div class="scroll-character">
-    <img src="images/pigeon.gif" class="scroll-animal">
-
-    <div class="scroll-text" id="scrollText">
-        scroll.
+    <div class="scroll-widget">
+        <div class="scroll-text">SCROLLL</div>
+        <div class="scroll-icon-container">
+            <div class="galaxy-ring"></div>
+            <div class="galaxy-ring delay"></div>
+            <div class="scroll-dot"></div>
+        </div>
     </div>
-</div>
 
 
- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+
+
+    <script>document.querySelector('.scroll-widget').addEventListener('click', () => {
+            window.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });</script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="js/script.js"></script>
+    <script src="js/port.js"></script>
 </body>
 
 </html>
