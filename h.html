@@ -15,95 +15,265 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* 🌌 CANVAS BACKGROUND */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+
+/* ============================================================
+   PROJECT HUB SECTION (SAFE NAMES)
+   ============================================================ */
+.project-hub-section {
+    padding: 100px 5%;
+    background: #000;
+    min-height: 100vh;
+    color: #fff;
 }
 
-/* SECTION */
-.about {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1200px;
-}
-
-/* CARD */
-.card {
+.project-hub-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.5rem;
     text-align: center;
-    transform-style: preserve-3d;
-    transition: transform 0.1s ease;
+    margin-bottom: 60px;
+    letter-spacing: 5px;
+    color: #fff;
 }
 
-/* NAME */
-.name {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
-    color: #00d9ff;
-    text-shadow:
-        0 0 10px #00d9ff,
-        0 0 30px #00d9ff,
-        0 0 60px #008cff;
-    transform: translateZ(80px);
-    opacity: 0;
-    animation: fadeUp 1.5s ease forwards;
+.project-hub-card {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 217, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
 }
 
-/* ROLE */
-.role {
-    margin-top: 10px;
-    font-size: 1.5rem;
-    color: #aaa;
-    letter-spacing: 3px;
-    transform: translateZ(60px);
-    opacity: 0;
-    animation: fadeUp 1.5s ease forwards 0.5s;
+/* --- VISUALS & TOGGLE --- */
+.project-hub-visuals {
+    position: relative;
 }
 
-/* DESC */
-.desc {
-    margin-top: 20px;
-    max-width: 600px;
-    color: #ccc;
-    line-height: 1.7;
-    transform: translateZ(40px);
-    opacity: 0;
-    animation: fadeUp 1.5s ease forwards 1s;
+.view-toggle-terminal {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* BUTTON */
-.btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    border: 1px solid #00d9ff;
-    color: #00d9ff;
-    text-decoration: none;
-    display: inline-block;
-    transform: translateZ(50px);
-    opacity: 0;
-    animation: fadeUp 1.5s ease forwards 1.5s;
+.toggle-node {
+    background: transparent;
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    color: rgba(0, 217, 255, 0.6);
+    padding: 8px 15px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.btn:hover {
-    background: #00d9ff;
-    color: black;
-    box-shadow: 0 0 20px #00d9ff;
+.toggle-node.active {
+    background: rgba(0, 217, 255, 0.1);
+    color: #00d9ff;
+    border-color: #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px) translateZ(0);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) translateZ(60px);
+/* --- CAROUSEL --- */
+.project-hub-carousel {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gallery-wrapper {
+    display: none;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery-wrapper.active {
+    display: flex;
+}
+
+.carousel-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+.mobile-frame {
+    max-width: 200px; /* Slimmer for mobile feel */
+    border-radius: 20px;
+    border: 4px solid #222;
+}
+
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* --- INFO SECTION --- */
+.project-hub-tag {
+    color: #ffaa00;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.project-hub-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.project-hub-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.tech-stack-list {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.tech-stack-list span {
+    font-size: 11px;
+    color: #00d9ff;
+    opacity: 0.6;
+}
+
+.project-hub-links {
+    display: flex;
+    gap: 20px;
+}
+
+.tech-link-btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+    clip-path: polygon(0% 0%, 90% 0%, 100% 30%, 100% 100%, 10% 100%, 0% 70%);
+}
+
+.tech-link-btn.live {
+    background: #00d9ff;
+    color: #000;
+}
+
+.tech-link-btn.source {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.tech-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+}
+
+
+
+.project-hub-carousel {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 15px;
+    overflow: hidden; /* Important: Hides the other 4 images */
+}
+
+.gallery-strip {
+    display: none; /* Hidden by default */
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-strip.active {
+    display: flex; /* Only active strip shows */
+}
+
+.slide {
+    flex: 0 0 100%; /* Each slide is exactly 100% width */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.slide img {
+    max-height: 100%;
+    max-width: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.2));
+}
+
+.slide img.mob-img {
+    max-height: 90%;
+    border: 6px solid #111;
+    border-radius: 25px;
+}
+
+/* Nav Arrows */
+.carousel-nav-overlay {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    pointer-events: none;
+}
+
+.nav-arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00d9ff;
+    color: #00d9ff;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.nav-arrow:hover {
+    background: #00d9ff;
+    color: #000;
+    box-shadow: 0 0 15px #00d9ff;
+}
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .project-hub-card {
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -111,76 +281,105 @@ canvas {
 
 <body>
 
-<canvas id="stars"></canvas>
 
-<section class="about">
-    <div class="card" id="card">
-        <h1 class="name">Jyothi Devappa</h1>
-        <h2 class="role">Full Stack Developer</h2>
+    <section class="project-hub-section">
+    <div class="project-hub-container">
+        
+        <h2 class="project-hub-heading">
+            <span class="tech-bracket">[</span> PROJECT_DEVICES <span class="tech-bracket">]</span>
+        </h2>
 
-        <p class="desc">
-            Building immersive web experiences with modern technologies. 
-            Focused on performance, creativity, and next-level UI interactions 
-            that feel alive and engaging.
-        </p>
+        <div class="project-hub-card">
+            <div class="project-hub-visuals">
+                <div class="view-toggle-terminal">
+                    <button class="toggle-node active" onclick="toggleProjectView('web', this)">
+                        <i class="fas fa-desktop"></i> WEB_VIEW
+                    </button>
+                    <button class="toggle-node" onclick="toggleProjectView('mobile', this)">
+                        <i class="fas fa-mobile-alt"></i> MOB_VIEW
+                    </button>
+                </div>
 
-        <a href="#" class="btn">View My Work</a>
+                <div class="project-hub-carousel">
+                    
+                    <div id="web-gallery" class="gallery-strip active">
+                        <div class="slide"><img src="web1.jpg" alt="Web 1"></div>
+                        <div class="slide"><img src="web2.jpg" alt="Web 2"></div>
+                        <div class="slide"><img src="web3.jpg" alt="Web 3"></div>
+                        <div class="slide"><img src="web4.jpg" alt="Web 4"></div>
+                        <div class="slide"><img src="web5.jpg" alt="Web 5"></div>
+                    </div>
+
+                    <div id="mobile-gallery" class="gallery-strip">
+                        <div class="slide"><img src="mob1.jpg" class="mob-img" alt="Mob 1"></div>
+                        <div class="slide"><img src="mob2.jpg" class="mob-img" alt="Mob 2"></div>
+                        <div class="slide"><img src="mob3.jpg" class="mob-img" alt="Mob 3"></div>
+                        <div class="slide"><img src="mob4.jpg" class="mob-img" alt="Mob 4"></div>
+                        <div class="slide"><img src="mob5.jpg" class="mob-img" alt="Mob 5"></div>
+                    </div>
+
+                    <div class="carousel-nav-overlay">
+                        <button class="nav-arrow prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="nav-arrow next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-hub-info">
+                <div class="project-hub-tag">// PRODUCTION_READY</div>
+                <h3 class="project-hub-title">PROJECT_NAME_01</h3>
+                <p class="project-hub-description">
+                    Detailed analysis of the e-commerce architecture, focusing on the seamless transition between desktop and mobile interfaces.
+                </p>
+                <div class="project-hub-links">
+                    <a href="#" class="tech-link-btn live">LIVE_SITE</a>
+                    <a href="#" class="tech-link-btn source">CODE_BASE</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 
 
-
 <script>
-/* 🌌 STAR BACKGROUND */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
-let stars = [];
+let webIndex = 0;
+let mobIndex = 0;
 
-for (let i = 0; i < 120; i++) {
-    stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speed: Math.random() * 0.5
-    });
+function toggleProjectView(view, btn) {
+    const buttons = document.querySelectorAll('.toggle-node');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const webGall = document.getElementById('web-gallery');
+    const mobGall = document.getElementById('mobile-gallery');
+
+    if (view === 'web') {
+        webGall.classList.add('active');
+        mobGall.classList.remove('active');
+    } else {
+        mobGall.classList.add('active');
+        webGall.classList.remove('active');
+    }
 }
 
-function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function moveSlide(step) {
+    const activeStrip = document.querySelector('.gallery-strip.active');
+    const isWeb = activeStrip.id === 'web-gallery';
+    const slides = activeStrip.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-    ctx.fillStyle = "white";
-
-    stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        star.y += star.speed;
-        if (star.y > canvas.height) {
-            star.y = 0;
-            star.x = Math.random() * canvas.width;
-        }
-    });
-
-    requestAnimationFrame(drawStars);
+    if (isWeb) {
+        webIndex = (webIndex + step + totalSlides) % totalSlides;
+        activeStrip.style.transform = `translateX(-${webIndex * 100}%)`;
+    } else {
+        mobIndex = (mobIndex + step + totalSlides) % totalSlides;
+        activeStrip.style.transform = `translateX(-${mobIndex * 100}%)`;
+    }
 }
 
-drawStars();
-
-/* 🖱️ MOUSE 3D TILT */
-const card = document.getElementById("card");
-
-document.addEventListener("mousemove", (e) => {
-    let x = (window.innerWidth / 2 - e.clientX) / 25;
-    let y = (window.innerHeight / 2 - e.clientY) / 25;
-
-    card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-});
 </script>
 
 </body>

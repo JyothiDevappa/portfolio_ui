@@ -78,13 +78,13 @@
         /* Ensure it shows when active */
     }
 
- 
+
 
     .main-menu-links {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px; 
+        gap: 15px;
         margin-top: 130px;
         width: 100%;
         z-index: 2;
@@ -233,7 +233,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px; /* Tighter gap so it fits on small screens */
+        gap: 15px;
+        /* Tighter gap so it fits on small screens */
         margin-top: 130px;
         width: 100%;
         z-index: 2;
@@ -265,9 +266,9 @@
 
 
 
-.mobile-socials {
-        margin-top: auto !important; 
-        padding-bottom: 80px !important; 
+    .mobile-socials {
+        margin-top: auto !important;
+        padding-bottom: 80px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -286,16 +287,19 @@
     /* THIS IS THE PART THAT WAS MISSING */
     .divider span {
         position: absolute;
-        top: -10px; /* Aligns perfectly on top of the line */
+        top: -10px;
+        /* Aligns perfectly on top of the line */
         left: 40%;
         transform: translateX(-50%);
-        background: #000; /* Matches your galaxy background */
+        background: #000;
+        /* Matches your galaxy background */
         padding: 0 10px;
         font-size: 8px;
         color: #ffaa00;
         letter-spacing: 2px;
         text-transform: uppercase;
-        display: block; /* Ensures it stays visible */
+        display: block;
+        /* Ensures it stays visible */
         z-index: 2;
 
     }
@@ -349,25 +353,6 @@
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -488,49 +473,198 @@
 }
 
 
+.j-links {
+    display: none;
+}
 
 
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
 
+    /* GLOBAL FIX */
+    html,
+    body {
+        overflow-x: hidden;
+    }
 
+    .calm-horizon {
+        padding-left: 20px;
+        align-items: flex-start;
+        padding-top: 120px;
+    }
 
+    /* MOON */
+    .cinematic-moon {
+        width: 60px;
+        height: 60px;
+        top: 30px;
+        right: 30px;
+    }
 
+    /* UFO */
+    .ufo-container {
+        top: 10%;
+        left: 10%;
+        font-size: 2rem;
+    }
 
+    /* MOUNTAIN */
+    .mountain-range {
+        bottom: 80px;
+        opacity: 0.2;
+    }
 
+    /* WATER */
+    .water-scene {
+        height: 120px;
+    }
 
+    .tiny-boat {
+        font-size: 16px;
+        bottom: 50px;
+    }
 
+    /* SCROLL WIDGET */
+    .scroll-widget {
+        right: 20px;
+        bottom: 20px;
+    }
 
+    .scroll-text {
+        font-size: 8px;
+    }
 
+    /* ABOUT SECTION */
+    .about-content-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+        padding-left: 20px;
+    }
 
+    /* BIG NAME */
+    .about_name {
+        font-size: 5rem;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
 
+    .cat-o {
+        width: 55px;
+        height: 65px;
+    }
 
+    /* J SECTION */
+    .j-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        position: relative;
+    }
 
+    .j-visual-stack {
+        position: relative;
+    }
 
+    .j-links {
+        margin-left: 120px !important;
 
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1rem !important;
 
+        border-left: 1px solid #00d9ff;
+        padding-left: 10px;
 
+        display: block;
+        white-space: nowrap;
 
+    }
 
+    .j-links a {
+        display: block;
+        color: #00d9ff;
+        text-decoration: none;
+        margin-bottom: 5px;
+    }
 
+    .j-links a:hover {
+        color: #fff;
+        text-shadow: 0 0 6px #00d9ff;
+    }
 
+    .j-links {
+        display: block;
+    }
 
+    .big-j {
+        font-size: 6rem;
+    }
 
+    .sitting-cat {
+        width: 120px;
+        left: 2px !important;
+    }
 
+    /* TEXT */
+    .story-description {
+        font-size: 0.75rem;
+        line-height: 2.7;
 
+        text-align: justify;
+    }
 
+    .code-line {
+        margin-bottom: 15px;
+    }
 
+    /* STATUS TERMINAL */
+    .status-terminal {
+        padding: 8px 10px;
+            margin-top: -60px !important; /* move up */
 
+    }
 
+    .status-text {
+        font-size: 9px;
+    }
 
+    /* MODAL (ABOUT / INTERN) */
+    .status-card,
+    .intern-content,
+    .glass-panel {
+        width: 90%;
+        padding: 25px 20px;
+    }
 
+    .intern-content h2 {
+        font-size: 1.2rem;
+    }
 
+    .intern-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
 
+    /* CLOSE BUTTON */
+    .close-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        top: 10px;
+        right: 10px;
+    }
 
+}
 
+@media (max-width: 480px) {
 
+    .j-links {
+        margin-left: 80px;   /* reduce horizontal push */
+        transform: translateY(-180%); /* reduce vertical shift */
+        font-size: 9px;      /* slightly smaller */
+    }
 
-
-
-
+}
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 1200px) {
@@ -618,25 +752,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Enable cursor on mobile but make it small */
 @media (max-width: 768px) {
     body {
@@ -675,17 +790,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
     .sky-container {
         position: absolute;
@@ -702,14 +806,11 @@
         height: 3px;
         background: #fff;
         border-radius: 50%;
-        /* Sharp fireball glow */
         box-shadow: 0 0 15px #fff, 0 0 30px #00d9ff, 0 0 50px #8c00ff;
         animation: meteorSlide 15s linear infinite;
-        /* Very slow as requested */
         opacity: 0;
     }
 
-    /* The "Gas Trail" (Airplane/Comet style) */
     .meteor::after {
         content: "";
         position: absolute;
@@ -717,7 +818,6 @@
         right: 0;
         transform: translateY(-50%);
         width: 120px;
-        /* The length of the trail */
         height: 1px;
         /* Fading gas tail */
         background: linear-gradient(to left, rgba(0, 217, 255, 0.8), rgba(140, 0, 255, 0.2), transparent);
@@ -874,56 +974,96 @@
         background: rgba(255, 255, 255, 0.8);
         border-radius: 50%;
         box-shadow: 0 0 15px #00d9ff;
-        /* Very slow rotation-style path */
         animation: cosmicTravel 25s ease-in-out infinite;
         opacity: 0.4;
     }
 
 
     @media screen and (max-width: 768px) {
-    .ocean-container {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 15dvh; 
-        opacity: 0.3; /* Slightly more visible as requested */
-        overflow: hidden;
-        z-index: -1;
+        .ocean-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 15dvh;
+            opacity: 0.3;
+            /* Slightly more visible as requested */
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 400%;
+            /* Wider for smoother movement */
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300d9ff" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: 25% 100%;
+            animation: waveMove 20s linear infinite;
+            /* Slower, majestic waves */
+        }
+
+        .wave2 {
+            bottom: 10px;
+            opacity: 0.6;
+            filter: blur(2px);
+            /* Soft aesthetic shade */
+            animation: waveMove 25s linear infinite reverse;
+        }
+
+        /* Added a 3rd layer for extra depth */
+        .wave3 {
+            position: absolute;
+            bottom: -20px;
+            width: 400%;
+            height: 110%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%238c00ff" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: 25% 100%;
+            opacity: 0.2;
+            animation: waveMove 35s linear infinite;
+        }
+
+        @keyframes waveMove {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
     }
 
-    .wave {
-        position: absolute;
-        bottom: 0;
-        width: 400%; /* Wider for smoother movement */
-        height: 100%;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300d9ff" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-        background-size: 25% 100%;
-        animation: waveMove 20s linear infinite; /* Slower, majestic waves */
-    }
+}
 
-    .wave2 {
-        bottom: 10px;
-        opacity: 0.6;
-        filter: blur(2px); /* Soft aesthetic shade */
-        animation: waveMove 25s linear infinite reverse;
-    }
 
-    /* Added a 3rd layer for extra depth */
-    .wave3 {
-        position: absolute;
-        bottom: -20px;
-        width: 400%;
-        height: 110%;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%238c00ff" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-        background-size: 25% 100%;
-        opacity: 0.2;
-        animation: waveMove 35s linear infinite;
-    }
 
-    @keyframes waveMove {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
+
+
+
+@media (max-width: 1024px) {
+    .portfolio-page-wrapper .brand-vertical {
+        display: none;
     }
 }
 
+
+
+
+@media (max-width: 1024px) {
+    .portfolio-page-wrapper .links-group {
+        flex-direction: row;
+        /* Stack side-by-side on mobile */
+        justify-content: center;
+        margin-left: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .portfolio-page-wrapper .link-item {
+        flex-direction: column;
+        /* Icon on top, text on bottom */
+        font-size: 0.7rem;
+        gap: 8px;
+    }
 }

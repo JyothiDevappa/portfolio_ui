@@ -13,6 +13,78 @@
 
 <body>
 
+
+
+
+
+
+    <section class="project-vault">
+    <div class="tech-drift-bg">
+        <span class="tech-icon"><i class="fab fa-github"></i></span>
+        <span class="tech-icon"><i class="fab fa-figma"></i></span>
+        <span class="tech-icon"><i class="si si-vercel"></i></span>
+        <span class="tech-icon"><i class="si si-netlify"></i></span>
+    </div>
+
+    <h2 class="section-title">PROJECT_VAULT.exe</h2>
+
+    <div class="project-container" id="project1">
+        <div class="device-switch">
+            <button class="toggle-btn active" onclick="switchView('project1', 'web')">WEB</button>
+            <button class="toggle-btn" onclick="switchView('project1', 'mob')">MOB</button>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info">
+                <h3>01. QI FI FASHION</h3>
+                <p>Premium E-commerce build focusing on visual hierarchy & glassmorphism UI.</p>
+                <div class="project-links">
+                    <a href="https://store.qifi.in" target="_blank"><i class="fas fa-external-link-alt"></i> VISIT</a>
+                    <a href="#"><i class="fab fa-github"></i> REPO</a>
+                </div>
+            </div>
+
+            <div class="project-visual" id="p1-visual" data-mode="web">
+                <div class="device-frame">
+                    <img src="assets/qifi-web.jpg" class="img-web" alt="Web View">
+                    <img src="assets/qifi-mob.jpg" class="img-mob" alt="Mobile View">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="project-container" id="project2">
+        <div class="device-switch">
+            <button class="toggle-btn active" onclick="switchView('project2', 'web')">WEB</button>
+            <button class="toggle-btn" onclick="switchView('project2', 'mob')">MOB</button>
+        </div>
+        <div class="project-content">
+            <div class="project-info">
+                <h3>02. J SCENTIQUE</h3>
+                <p>Luxury perfume showcase with neon glow aesthetics and custom interaction.</p>
+                <div class="project-links">
+                    <a href="#"><i class="fas fa-external-link-alt"></i> VISIT</a>
+                    <a href="#"><i class="fab fa-github"></i> REPO</a>
+                </div>
+            </div>
+            <div class="project-visual" id="p2-visual" data-mode="web">
+                <div class="device-frame">
+                    <img src="assets/jscent-web.jpg" class="img-web" alt="Web View">
+                    <img src="assets/jscent-mob.jpg" class="img-mob" alt="Mobile View">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
 <div class="heading-area">
 
 <h1>LATEST PROJECTS</h1>
@@ -210,6 +282,24 @@ icon.classList.add("fa-play");
 });
 
 });</script>
+
+
+
+
+
+
+<script>function switchView(projectId, mode) {
+    const container = document.getElementById(projectId);
+    const visual = container.querySelector('.project-visual');
+    const btns = container.querySelectorAll('.toggle-btn');
+
+    // Update Data Attribute for CSS transformation
+    visual.setAttribute('data-mode', mode);
+
+    // Update Button Appearance
+    btns.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}</script>
 
 <script src="script.js"></script>
 

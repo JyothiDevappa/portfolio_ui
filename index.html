@@ -14,24 +14,26 @@
     <!-- 3. Google Fonts (grouped together) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
     <!-- 4. Icons (ONLY ONE Font Awesome, remove duplicate) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- 5. External Scripts -->
-<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <!-- 6. Your CSS (custom last so it overrides others) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
     <div class="hero-container">
         <video autoplay muted loop playsinline id="bg-video">
             <source src="videos/hero-banner.mp4" type="video/mp4">
         </video>
-
-
 
         <nav>
             <div class="menu-toggle" id="mobile-menu">
@@ -47,7 +49,6 @@
                     <div class="tech-moon"></div>
                     <div class="meteor"></div>
                 </div>
-
 
                 <div class="cosmic-horizon">
                     <div class="star-field"></div>
@@ -95,21 +96,7 @@
             </div>
         </nav>
 
-
-
-
-
-
-
-
-
-
-
         <div class="content-box">
-
-
-
-
             <div class="hero-interface">
                 <div class="status-layer">
                     <div class="status-content">
@@ -119,30 +106,10 @@
                 </div>
 
                 <div class="name-layer">
-
                     <span class="intro">Hi, I'm</span>
-
                     <h1 class="hero_name" data-value="JYOTHIDEVAPPA">JYOTHIDEVAPPA</h1>
                 </div>
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="subtitle-frame">
                 <p class="subtitle">
                     <span class="tech-bracket">[</span>
@@ -150,17 +117,10 @@
                     <span class="tech-bracket">]</span>
                 </p>
             </div>
-
-
             <a href="resume.pdf" class="resume-btn" download>
                 RESUME <i class="fa-solid fa-circle-down"></i>
             </a>
-
         </div>
-
-
-
-
         <div class="tech-social-hub">
             <div class="social-rail"></div>
 
@@ -177,114 +137,165 @@
 
             <div class="social-base-line"></div>
         </div>
-
-
-
-
-
     </div>
 
+    <section class="calm-horizon" id="about">
+        <div class="sky-background">
+            <div class="stars-container" id="stars-field"></div>
+            <div class="cinematic-moon" onclick="showSkillsCard()"></div>
+
+            <div class="about-overlay" id="skills-card-overlay" onclick="hideSkillsCard()">
+                <div class="status-card" onclick="event.stopPropagation()">
+                    <button class="close-btn" onclick="hideSkillsCard()">×</button>
+
+                    <div class="card-content">
+                        <h2 class="card-title">TECHNICAL_SKILLS</h2>
+                        <p class="card-description">
+                            <strong>Core:</strong> HTML5, CSS3, JavaScript (ES6+), MySQL<br>
+                            <strong>Design:</strong> UI/UX, Figma, Canva<br>
+                            <strong>Deployment:</strong> GitHub, Vercel, Netlify
+                        </p>
+                        <p class="card-footer">
+                            "Turning ideas into user-friendly, clean-code websites."
+                        </p>
+                    </div>
+                </div>
+            </div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-<section class="calm-horizon" id="about">
-    <div class="sky-background">
-        <div class="stars-container" id="stars-field"></div>
-        <div class="cinematic-moon"></div>
-        
-        <div class="mountain-range">
-            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path d="M0,224L120,192C240,160,480,96,720,112C960,128,1200,224,1320,272L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z" fill="rgba(0, 217, 255, 0.05)"></path>
-            </svg>
-        </div>
-    </div>
-
-    <div class="hero-interface">
-        <div class="status-content">
-            <span class="label">LOCATION:</span>
-            <span class="value">SKY_SECTOR_07</span>
+            <div class="mountain-range">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path
+                        d="M0,224L120,192C240,160,480,96,720,112C960,128,1200,224,1320,272L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
+                        fill="rgba(0, 217, 255, 0.05)"></path>
+                </svg>
+            </div>
         </div>
 
-        <!-- <h1 class="about_name">hello...! i am J</h1> -->
+        <div class="sky-loot-system">
+            <div class="ufo-container" onclick="unlockData('career')">
+                <div class="ufo-ship">🛸</div>
+                <span class="unlock-hint">GOALS</span>
+            </div>
+        </div>
 
+        <div class="info-panel-overlay" id="info-overlay">
+            <div class="glass-panel">
+                <button class="close-panel" onclick="closePanel()">×</button>
+                <div id="panel-content">
+                </div>
+            </div>
+        </div>
         <div class="hero-interface">
-    <h1 class="about_name">
-        HELL<span class="cat-o">
-            <img src="assets/cat-awake.gif" alt="cat">
-        </span>...!
-    </h1>
-
-    <!-- <h1 class="about_name interactive-reveal">
-        I AM <span class="reveal-text" data-full="JYOTHI DEVAPPA">J</span>
-        <span class="hint-dot"></span>
-    </h1>
-     -->
+            <div class="status-content">
+                <span class="label">LOCATION:</span>
+                <span class="value">SKY_SECTOR_07</span>
+            </div>
 
 
-  
-<!--     
-    <div class="j-container">
-        <span class="big-j">J</span>
-        
-        <img src="Untitled file.gif" class="sitting-cat" alt="cat">
-        
-        <span class="hidden-initials">YOTHI DEVAPPA</span>
-        
-        <span class="magic-sparkle"></span>
-    </div>
-     -->
+            <h1 class="about_section_name">
+                HEL<span class="cat-o">
+                    <img src="assets/cat-awake.gif" alt="cat" onclick="showAboutCard()" style="cursor: pointer;">
+                </span>.!
+            </h1>
 
-     <div class="j-container" id="magic-trigger">
-    <span class="big-j">J</span>
-    <img src="assets/cat-sitting.gif" class="sitting-cat" id="cat-actor" alt="cat">
-    
-      <p class="story-description">
-            I build creative digital experiences that feel like a breath of fresh air. 
-            No corporate fluff, just pure code and design.
-        </p>
+            <div class="about-overlay" id="about-card-overlay" onclick="hideAboutCard()">
+                <div class="status-card" onclick="event.stopPropagation()">
+                    <button class="close-btn" onclick="hideAboutCard()">×</button>
 
- 
-</div>
+                    <div class="card-content">
+                        <h2 class="card-title">CURRENT_STATUS</h2>
+                        <p class="card-description">
+                            Focusing on building modern websites with clean code and UI design.
+                            I enjoy turning ideas into websites—still learning, still improving in Full Stack tech.
+                        </p>
+                        <p class="card-footer">
+                            "Currently: Improving Full Stack Development skills."
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-     
-     <a href="about.html" target="_blank" class="about-resume-btn">
-    More Info? <i class="fas fa-arrow-right"></i>
-</a>
+            <div class="about-content-wrapper">
+                <div class="j-container">
+                    <div class="j-visual-stack">
+                        <span class="big-j">J</span>
+                        <img src="assets/cat-sitting.gif" class="sitting-cat" alt="cat">
+
+                    </div>
+
+                    <div class="j-links">
+                        <a href="about.html">> more-info ??</a>
+                        <a href="projects.html">> view-work -></a>
+                    </div>
+                    <div class="career-content">
+                        <div class="status-terminal">
+                            <span class="pulse-dot"></span>
+                            <span class="status-text">STATUS: CURRENTLY_SEEKING_JOB_OPPORTUNITIES</span>
+                        </div>
+                        <div class="bio-terminal">
+                            <p class="story-description">
+                                <span class="code-line">I am seeking <span class="highlight">career
+                                        opportunities</span> to evolve as a developer.</span>
+                                <span class="code-line">Currently refining my <span class="highlight">Full-Stack
+                                        expertise</span> through modern frameworks.</span>
+                                <span class="code-line">I build <span class="highlight">open-source</span> projects
+                                    that prioritize clean, responsive design.</span>
+
+                                <span class="code-line">
+                                    Previously worked as an <span id="exp-trigger-link"
+                                        class="highlight-experince">INTERN</span>,
+                                    where I learned handling projects and gained real experience.
+                                </span>
+
+                            <div id="intern-overlay" class="intern-overlay">
+                                <div class="intern-content">
+                                    <span id="close-intern" class="close-btn">&times;</span>
+                                    <h2>Internship Experience</h2>
+                                    <p>
+                                        I worked as an intern across multiple projects where I handled real-time
+                                        development tasks, content updates, UI improvements, and feature implementation.
+                                        I gained hands-on experience in front-end development, debugging, deployment,
+                                        and working with live production environments.
+                                    </p>
+                                    <p>
+                                        This experience helped me understand teamwork, deadlines, and how real
+                                        industry workflows operate.
+                                    </p>
+                                </div>
+                            </div>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-    </div>
-    <div class="water-scene">
-        <div class="tiny-boat">⛵</div>
-        <div class="waves-layer">
-            <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none">
-                <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs>
-                <g class="parallax-waves">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(0, 217, 255, 0.1)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(0, 217, 255, 0.05)" />
-                </g>
-            </svg>
-        </div>
-    </div>
-</section>
+            <div class="water-scene">
+                <div class="water-stone-trigger" onclick="showAboutCard()">
+                    <div class="round-pebble"></div>
+                    <div class="star-pulse"></div>
+                </div>
+
+                <div class="tiny-boat">⛵</div>
+                <div class="waves-layer">
+                    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none">
+                        <defs>
+                            <path id="gentle-wave"
+                                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                        </defs>
+                        <g class="parallax-waves">
+                            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(0, 217, 255, 0.1)" />
+                            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(0, 217, 255, 0.05)" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+    </section>
 
 
 
@@ -405,15 +416,6 @@
     </section>
 
 
-
-
-
-
-
-
-
-
-
     <div class="scroll-widget">
         <div class="scroll-text">SCROLLL</div>
         <div class="scroll-icon-container">
@@ -427,14 +429,70 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
+    <!-- <div id="intern-overlay" class="intern-overlay">
+    <div class="intern-content">
+        <span id="close-intern" class="close-btn">&times;</span>
 
+        <h2>Internship Experience</h2>
+        <p>
+            I worked as an intern across multiple projects where I handled real-time
+            development tasks, content updates, UI improvements, and feature implementation.
+            I gained hands-on experience in front-end development, debugging, deployment,
+            and working with live production environments.
+        </p>
 
+        <p>
+            This experience helped me understand teamwork, deadlines, and how real
+            industry workflows operate.
+        </p>
+    </div>
+</div> -->
 
-
+    <!-- hero section typing js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="js/index.js"></script>
     <script src="js/script.js"></script>
     <script src="js/port.js"></script>
+
+
+    <!-- <script>
+   document.addEventListener("DOMContentLoaded", () => {
+    const internBtn = document.getElementById("intern-btn-trigger");
+    const overlay = document.getElementById("intern-overlay");
+    const closeBtn = document.getElementById("close-intern");
+
+    const oldDisplayBox = document.getElementById('intern-info-display');
+    if(oldDisplayBox) oldDisplayBox.style.display = 'none';
+
+    if (internBtn) {
+        internBtn.addEventListener("click", (e) => {
+            e.preventDefault(); 
+            e.stopPropagation(); 
+            
+            overlay.style.display = "flex"; 
+            setTimeout(() => {
+                overlay.classList.add("active");
+                document.body.classList.add("modal-open");
+            }, 10);
+        });
+    }
+
+    const hideOverlay = () => {
+        overlay.classList.remove("active");
+        document.body.classList.remove("modal-open");
+        setTimeout(() => { 
+            if(!overlay.classList.contains('active')) overlay.style.display = "none"; 
+        }, 300);
+    };
+
+    if (closeBtn) closeBtn.addEventListener("click", hideOverlay);
+
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) hideOverlay();
+    });
+});
+</script> -->
+
 </body>
 
 </html>
